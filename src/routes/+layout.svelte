@@ -2,6 +2,6 @@
   import '../app.css';
 </script>
 
-<div class="bg-black h-screen text-white flex items-center justify-center">
+<div class="text-white flex items-center justify-center overflow-y-auto">
   <slot />
 </div>
