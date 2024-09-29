@@ -22,7 +22,7 @@ export const THEMES_BY_AUTHOR: Record<string, string> = {
   "patrick.jane@mentalist.com": "Read people's mind, Psychology",
   "dustin.henderson@strangerthings.com": "Anything chemistry and physics",
   "jack.reacher@jackreacher.com": "How to physically hurt a man 10 ways",
-  "lucifer.morningstar@lucifer.com": "Facts about hell",
-  "emily.cooper@emilyinparis.com": "How to love 2 guys at the same time",
+  "lucifer.morningstar@lucifer.com": "Facts about hell and where might sinners go",
+  "emily.cooper@emilyinparis.com": "How to do marketing effectively",
   "joyce.byers@strangerthings.com": "Saving my son to monsters"
 }

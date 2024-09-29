@@ -2,6 +2,7 @@
   import { AUTHORS } from "$lib/index.js";
   import { fade, slide } from "svelte/transition";
   import type { CreateBookPayload } from "$lib/types.js";
+  import _ from "lodash";
 
   export let generateBook: (payload: CreateBookPayload) => void
   export let loading: boolean
@@ -22,6 +23,14 @@
   function handleChange(event: any) {
     const { name, value } = event.target
     self[name] = value
+  }
+
+  function getName(email: string) {
+    return _.startCase(email.split("@")[0].split(".").join(" "))
+  }
+
+  function getShow(email: string) {
+    return email.split("@")[1].replace('.com', '')
   }
 
 </script>
@@ -59,9 +68,8 @@
                 src="/dp/{a}.png" alt={a}>
             </div>
             <div class="flex flex-col justify-center items-start px-5">
-              {#each a.split("@") as t}
-                <p class="text-lg">{t.replace('.com', '')}</p>
-              {/each}
+              <p class="text-xl font-medium">{getName(a)}</p>
+              <p class="text-sm">{getShow(a)}</p>
             </div>
           </div>
         </button>
@@ -71,7 +79,7 @@
   
   <button   
     disabled={loading}
-    class="bg-violet-500 text-2xl font-bold py-4 rounded-lg disabled:opacity-50 { bookTitle && 'hidden'}"
+    class="bg-gradient-to-b from-violet-500 to-violet-700 transition-all hover:text-white text-2xl text-violet-200 font-bold py-4 rounded-lg disabled:opacity-50 { bookTitle && 'hidden'}"
     type="submit">
     {#if loading}
       <span>Generating...</span>

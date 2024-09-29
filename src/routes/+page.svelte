@@ -65,8 +65,9 @@
 
 <div 
   bind:this={element}
-  class="flex items-center justify-center flex-col">
-  <div class="border border-violet-400 shadow-2xl shadow-violet-900 bg-black p-10 rounded-2xl w-full max-w-screen-md">
+  class="flex items-center justify-center flex-col sm:p-10">
+
+  <div class="border border-violet-500 shadow-2xl shadow-violet-900  p-10 rounded-2xl w-full max-w-screen-md relative bg-gradient-to-br from-slate-950 to-[#11012e]">
 
     <Header />
     <CreateBookForm 
@@ -78,7 +79,7 @@
       <div 
         in:slide
         out:fade
-        class="mt-5 border-t border-violet-500 pt-5 sm:w-[620px]">
+        class="mt-5 border-t border-violet-500 pt-5 sm:w-[620px] z-10 relative">
         <p class="text-lg sm:text-3xl text-center italic w-full text-wrap">{bookTitle}</p>
         <p class="text-center">by {author}</p>
       
