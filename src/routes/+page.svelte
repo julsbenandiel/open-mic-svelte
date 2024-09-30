@@ -2,12 +2,10 @@
   import axios from 'axios'
   import CreateBookForm from '../components/create-book-form.svelte';
   import type { CreateBookPayload } from '$lib/types.js';
-  import { fade, slide } from 'svelte/transition';
+  import { slide } from 'svelte/transition';
   import Header from '../components/header.svelte';
   import { goto } from '$app/navigation';
-  import { afterUpdate } from 'svelte';
 
-  
   let element: HTMLDivElement;
   let submitting: boolean = false
   let loading: boolean = false
@@ -65,9 +63,9 @@
 
 <div 
   bind:this={element}
-  class="flex items-center justify-center flex-col sm:p-10">
+  class="flex items-center justify-center flex-col sm:p-10 ">
 
-  <div class="border border-violet-500 shadow-2xl shadow-violet-900  p-10 rounded-2xl w-full max-w-screen-md relative bg-gradient-to-br from-slate-950 to-[#11012e]">
+  <div class="border border-violet-500 shadow-2xl shadow-violet-900  p-10 rounded-2xl w-full max-w-screen-md relative bg-gradient-to-br from-slate-950 to-[#11012e] transition duration-100">
 
     <Header />
     <CreateBookForm 
@@ -78,7 +76,7 @@
     {#if bookTitle}
       <div 
         in:slide
-        out:fade
+        out:slide
         class="mt-5 border-t border-violet-500 pt-5 sm:w-[620px] z-10 relative">
         <p class="text-lg sm:text-3xl text-center italic w-full text-wrap">{bookTitle}</p>
         <p class="text-center">by {author}</p>

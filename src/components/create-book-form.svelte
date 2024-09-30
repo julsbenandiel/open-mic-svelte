@@ -40,7 +40,7 @@
   on:submit|preventDefault={handleFormSubmit}>
   <div>
     <label 
-      class="text-xl sm:text-3xl mb-3 block font-bold"
+      class="text-xl sm:text-3xl mb-3 font-bold flex items-center gap-x-1"
       for="name">What is your name?</label>
     <input 
       id="name"
@@ -58,7 +58,8 @@
       {#each AUTHORS as a}
         <button 
           transition:fade
-          class="col-span-12 sm:col-span-6 border border-violet-500 rounded-lg h-50 text-2xl {author === a && "bg-violet-600"}"
+          class="col-span-12 sm:col-span-6 transition-all duration-200 border border-violet-500 rounded-lg h-50 text-2xl 
+          {author === a ? "bg-gradient-to-tr from-violet-600 to-violet-950" : "hover:bg-gradient-to-tr from-violet-950 to-black"}"
           on:click={() => author = a}
           type="button">
           <div class="flex">

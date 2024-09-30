@@ -7,8 +7,10 @@ export const AUTHORS = [
   "joyce.byers@strangerthings.com",
   "charles.boyle@brooklyn99.com",
   "harvey.specter@suits.com",
+  "saul.goodman@bettercallsaul.com",
   "patrick.jane@mentalist.com",
   "dustin.henderson@strangerthings.com",
+  "walter.white@breakingbad.com",
   "emily.cooper@emilyinparis.com",
   "jack.reacher@jackreacher.com",
   "lucifer.morningstar@lucifer.com",
@@ -24,5 +26,7 @@ export const THEMES_BY_AUTHOR: Record<string, string> = {
   "jack.reacher@jackreacher.com": "How to physically hurt a man 10 ways",
   "lucifer.morningstar@lucifer.com": "Facts about hell and where might sinners go",
   "emily.cooper@emilyinparis.com": "How to do marketing effectively",
-  "joyce.byers@strangerthings.com": "Saving my son to monsters"
+  "joyce.byers@strangerthings.com": "Saving my son to monsters",
+  "walter.white@breakingbad.com": "Chemist that cooks met and drugs",
+  "saul.goodman@bettercallsaul.com": "How to get clients in unorthodox ways"
 }

@@ -12,7 +12,11 @@ export async function POST({ request }) {
 
     const result = await db
       .collection("books")
-      .insertOne({ title, author })
+      .insertOne({ 
+        title,
+        author,
+        created_at: new Date()
+      })
 
     return json(
       { result },
