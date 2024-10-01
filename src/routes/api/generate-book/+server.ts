@@ -12,7 +12,8 @@ export async function POST({ request }) {
     const openai = new OpenAI({ apiKey: OPEN_AI_SECRET })
 
     const prompt = `
-      Generate a book name with person's name of "${name}" included. 
+      Generate a book name with person's name of "${name}" included.
+      Make the person's name appear not always in the start.
       With with a theme or storyline of ${THEMES_BY_AUTHOR[author]}. 
       Minimum of 10 words but maximum word count is 16 only.
     `
@@ -25,7 +26,10 @@ export async function POST({ request }) {
     const reply = _.get(response, 'choices[0].message.content');
 
     return json(
-      { title: reply },
+      { 
+        success: true,
+        title: reply 
+      },
       { status: 200, statusText: 'Book successfully generated.' }
     );
 

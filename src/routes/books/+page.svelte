@@ -1,7 +1,35 @@
-<script>
+<script lang="ts">
+  import type { Book } from "$lib/types.js";
+  import { slide } from "svelte/transition";
   import Header from "../../components/header.svelte";
+  import { findAll } from 'highlight-words-core'
 
   export let data;
+
+  function getBookName(book: Book) {
+    const textToHighlight = book.title;
+    const searchWords = [book.name];
+
+    const chunks = findAll({
+      searchWords,
+      textToHighlight
+    });
+
+    const highlightedText = chunks
+      .map((chunk: any) => {
+        const { end, highlight, start } = chunk;
+        const text = textToHighlight.substr(start, end - start);
+        if (highlight) {
+          return `<span class="bg-[#ff3d00] px-1 font-black">${text}</span>`;
+        } else {
+          return text;
+        }
+      })
+      .join("");
+
+    return highlightedText
+  }
+  
 </script>
 
 <main class="grid place-items-center md:p-10">
@@ -18,9 +46,11 @@
       </div>
       <div class="grid grid-cols-12 gap-5">
         {#each data.books as book}
-          <div class="col-span-12 sm:col-span-6 lg:col-span-4 text-2xl border border-violet-500 rounded-lg shadow-md shadow-violet-900 overflow-hidden flex flex-col justify-between">
+          <div 
+            transition:slide
+            class="col-span-12 sm:col-span-6 lg:col-span-4 text-2xl border border-violet-500 rounded-lg shadow-md shadow-violet-900 overflow-hidden flex flex-col justify-between">
             <div class="p-5">
-              <p>{book.title}</p>
+              <p>{@html getBookName(book)}</p>
             </div>
             
             <div class="flex items-center gap-x-2 px-5 pb-5 pt-3 mt-2 bg-gradient-to-tr from-purple-950 to-black">

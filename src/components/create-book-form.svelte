@@ -33,10 +33,18 @@
     return email.split("@")[1].replace('.com', '')
   }
 
+  function handleAuthorSelect(a: string) {
+    if (author === a) {
+      author = ""
+    } else {
+      author = a
+    }
+  }
+
 </script>
 
 <form 
-  class="flex flex-col justify-center gap-10"
+  class="flex flex-col justify-center gap-5"
   on:submit|preventDefault={handleFormSubmit}>
   <div>
     <label 
@@ -58,14 +66,14 @@
       {#each AUTHORS as a}
         <button 
           transition:fade
-          class="col-span-12 sm:col-span-6 transition-all duration-200 border border-violet-500 rounded-lg h-50 text-2xl 
+          class="col-span-12 md:col-span-6 lg:col-span-4 transition-all duration-200 border border-violet-500 rounded-lg h-50 text-2xl 
           {author === a ? "bg-gradient-to-tr from-violet-600 to-violet-950" : "hover:bg-gradient-to-tr from-violet-950 to-black"}"
-          on:click={() => author = a}
+          on:click={() => handleAuthorSelect(a)}
           type="button">
           <div class="flex">
             <div class="h-20 w-20 overflow-hidden rounded-tl-lg rounded-bl-lg">
               <img 
-                class="object-cover"
+                class="object-contain transition-transform duration-150 {author === a && "scale-150"}"
                 src="/dp/{a}.png" alt={a}>
             </div>
             <div class="flex flex-col justify-center items-start px-5">
@@ -80,7 +88,7 @@
   
   <button   
     disabled={loading}
-    class="bg-gradient-to-b from-violet-500 to-violet-700 transition-all hover:text-white text-2xl text-violet-200 font-bold py-4 rounded-lg disabled:opacity-50 { bookTitle && 'hidden'}"
+    class="mt-5 bg-gradient-to-b from-violet-500 to-violet-700 transition-all hover:text-white text-2xl text-violet-200 font-bold py-4 rounded-lg disabled:opacity-50 { bookTitle && 'hidden'}"
     type="submit">
     {#if loading}
       <span>Generating...</span>

@@ -1,8 +1,8 @@
 export type Book = {
   _id: string;
+  name: string
   title: string;
   author: string;
-  genre: string;
 }
 
 export type Author = {

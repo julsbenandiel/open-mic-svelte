@@ -5,11 +5,13 @@
   import { slide } from 'svelte/transition';
   import Header from '../components/header.svelte';
   import { goto } from '$app/navigation';
+  import _ from 'lodash'
 
   let element: HTMLDivElement;
   let submitting: boolean = false
   let loading: boolean = false
   let author = ""
+  let name = ""
   let bookTitle = ""
 
   const handleTryAgain = () => {
@@ -25,6 +27,7 @@
     try {
       loading = true
       author = payload.author
+      name = payload.name
       const path = "/api/generate-book"
 
       const res = await axios.post(path, payload, {
@@ -48,14 +51,18 @@
       submitting = true
       const path = "/api/insert-book"
 
-      await axios.post(path, { author, title: bookTitle }, {
+      await axios.post(path, { author, name, title: bookTitle }, {
         headers: { "Content-Type": "application/json" }
       })
 
       goto('/thank-you')
 
     } catch (error) {
-      throw new Error(JSON.stringify(error, null, 2))
+      console.log(error)
+      const message = _.get(error, "response.data.error", "Something went wrong")
+      alert(message)
+
+      submitting = false
     }
   }
 
@@ -65,7 +72,7 @@
   bind:this={element}
   class="flex items-center justify-center flex-col sm:p-10 ">
 
-  <div class="border border-violet-500 shadow-2xl shadow-violet-900  p-10 rounded-2xl w-full max-w-screen-md relative bg-gradient-to-br from-slate-950 to-[#11012e] transition duration-100">
+  <div class="border border-violet-500 shadow-2xl shadow-violet-900 p-10 rounded-2xl w-full max-w-screen-lg relative bg-gradient-to-br from-slate-950 to-[#11012e] transition duration-100">
 
     <Header />
     <CreateBookForm 
@@ -77,8 +84,8 @@
       <div 
         in:slide
         out:slide
-        class="mt-5 border-t border-violet-500 pt-5 sm:w-[620px] z-10 relative">
-        <p class="text-lg sm:text-3xl text-center italic w-full text-wrap">{bookTitle}</p>
+        class="mt-5 border-t border-violet-500 pt-5 z-10 relative">
+        <p class="text-xl sm:text-3xl text-center italic w-full text-wrap">{bookTitle}</p>
         <p class="text-center">by {author}</p>
       
         <div class="mt-5 flex gap-5 justify-end flex-col sm:flex-row">

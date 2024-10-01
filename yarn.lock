@@ -358,6 +358,11 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.6.tgz#628effeeae2064a1b4e79f78e81d87b7e5fc7b50"
   integrity sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==
 
+"@types/highlight-words-core@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@types/highlight-words-core/-/highlight-words-core-1.2.3.tgz#7ff626b068ae1f936d113fa9e178a6117dd08232"
+  integrity sha512-PWNU/NR0CaYEsK38mcCTyDzeS2TlEGK9kRhRMz1i86jVAe836ZlA3gl6QYpu+CG6IpfNKTgWpEnJuRededvC0g==
+
 "@types/lodash@^4.17.9":
   version "4.17.9"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.9.tgz#0dc4902c229f6b8e2ac5456522104d7b1a230290"
@@ -878,6 +883,11 @@ hasown@^2.0.2:
   integrity sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==
   dependencies:
     function-bind "^1.1.2"
+
+highlight-words-core@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/highlight-words-core/-/highlight-words-core-1.2.3.tgz#781f37b2a220bf998114e4ef8c8cb6c7a4802ea8"
+  integrity sha512-m1O9HW3/GNHxzSIXWw1wCNXXsgLlxrP0OI6+ycGUhiUHkikqW3OrwVHz+lxeNBe5yqLESdIcj8PowHQ2zLvUvQ==
 
 humanize-ms@^1.2.1:
   version "1.2.1"
